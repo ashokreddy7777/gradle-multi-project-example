@@ -21,7 +21,7 @@ pipeline {
         steps{
          withSonarQubeEnv('sonar'){
          sh ''' 
-            "${scannerHome}/bin/sonar-scanner" -Dsonar.java.binaries=. -Dsonar.projectKey=test -Dsonar.sourceEncoding=UTF-8
+            "${scannerHome}/bin/sonar-scanner" -Dsonar.java.binaries=. -Dsonar.projectKey=test -Dsonar.sourceEncoding=UTF-8 -Dsonar.sources=.
          '''     
         } 
       
