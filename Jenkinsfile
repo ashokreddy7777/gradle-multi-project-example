@@ -3,12 +3,14 @@ pipeline {
     options{timeout (time: 1, unit:'HOURS')}
 
     stages{
-        stage('Gradle Build'){
+      stage('Gradle Build'){
+          steps{
+             
             sh '''
                 gradle clean build
             '''    
         }
-
+      }
      stage('SonarQube analysis'){
        environment {
         scannerHome = tool 'sonarscanner'
