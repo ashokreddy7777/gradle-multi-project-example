@@ -4,10 +4,13 @@ pipeline {
 
     stages{
       stage('Gradle Build'){
+          environment {
+          gradleHome = tool 'gradle'
+       }
           steps{
              
             sh '''
-                gradle clean build
+                "${gradleHome}/bin/gradle" clean build
             '''    
         }
       }
@@ -24,5 +27,10 @@ pipeline {
       
       }
     }
+     stage('ws cleanup'){
+      steps{
+        cleanWs()
+      }
+    }   
 }
 }
